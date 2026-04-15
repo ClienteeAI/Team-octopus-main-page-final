@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-octopus-navy: #0F172A;
+  --color-octopus-cream: #F8F5F2;
+  --color-octopus-blue: #1E40AF;
+  --color-octopus-gold: #D4AF37;
+  --color-octopus-green: #064E3B;
+  --color-octopus-velvet: #1E1B4B;
+}
+
+@layer base {
+  body {
+    @apply bg-octopus-cream text-octopus-navy font-sans antialiased;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .velvet-shadow {
+    box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+  
+  .liquid-glass {
+    @apply bg-white/5 backdrop-blur-3xl border border-white/10 shadow-2xl;
+    transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
+  }
+  
+  .liquid-glass:hover {
+    @apply bg-white/10 backdrop-blur-[40px] border-white/20;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+  
+  /* Morphing elements for Liquid Glass feel */
+  @keyframes morph {
+    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  }
+  
+  .animate-morph {
+    animation: morph 8s ease-in-out infinite;
+  }
+
+  /* MaxTeam HR AI Dashboard Pulse */
+  @keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+  }
+  
+  .animate-pulse-gold {
+    animation: pulse-gold 2s infinite;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
