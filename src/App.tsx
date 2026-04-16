@@ -8,6 +8,7 @@ import VideoGallery from "./pages/VideoGallery";
 import AuditModal from "./components/modals/AuditModal";
 import PolicyModal from "./components/modals/PolicyModal";
 import CookieBanner from "./components/layout/CookieBanner";
+import AboutUs from "./pages/AboutUs";
 import { useState, useEffect } from "react";
 
 // Simple Skeleton for Other pages
@@ -47,7 +48,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<Article />} />
-            <Route path="/o-nas" element={<Placeholder title="O Týmu Octopus" />} />
+            <Route path="/o-nas" element={<AboutUs />} />
             <Route path="/videos" element={<VideoGallery />} />
           </Routes>
         </main>
