@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import Testimonials from "../components/sections/Testimonials";
 import Newsletter from "../components/sections/Newsletter";
+import ExperienceSection from "../components/sections/Experience";
 import ContactModal from "../components/modals/ContactModal";
 const logoImg = "/logo.png";
 const infographicImg = "/hr_process_infographic.jpg";
@@ -258,6 +259,10 @@ export default function Home() {
       {/* Transition: Benefits -> Testimonials */}
       <div className="h-20 bg-white" />
       <Testimonials />
+      <div className="h-20 bg-octopus-cream/30" />
+      
+      <ExperienceSection />
+      
       <div className="h-20 bg-octopus-navy" />
 
       <Newsletter />

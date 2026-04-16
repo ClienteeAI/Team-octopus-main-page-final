@@ -44,11 +44,33 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="pt-16 border-t border-octopus-navy/10 flex flex-col sm:flex-row justify-between gap-8 items-center">
+        <div className="pt-16 border-t border-octopus-navy/10 flex flex-col lg:flex-row justify-between gap-12 items-center">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-octopus-navy/30">© 2026 Team Octopus. Budujeme vítězné týmy.</p>
-          <div className="flex gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-octopus-navy/30">
-            <Link to="/privacy" className="hover:text-octopus-navy transition-colors">Soukromí</Link>
-            <Link to="/terms" className="hover:text-octopus-navy transition-colors">Podmínky</Link>
+          <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[10px] font-bold uppercase tracking-[0.3em] text-octopus-navy/30">
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-policy', { detail: 'privacy' }))}
+              className="hover:text-octopus-navy transition-colors whitespace-nowrap"
+            >
+              Soukromí
+            </button>
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-policy', { detail: 'terms' }))}
+              className="hover:text-octopus-navy transition-colors whitespace-nowrap"
+            >
+              Podmínky
+            </button>
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-policy', { detail: 'dpa' }))}
+              className="hover:text-octopus-navy transition-colors whitespace-nowrap text-octopus-gold/60 hover:text-octopus-gold"
+            >
+              Smlouva o zpracování (DPA)
+            </button>
+            <button 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-cookie-settings'))}
+              className="hover:text-octopus-navy transition-colors whitespace-nowrap"
+            >
+              Nastavení cookies
+            </button>
           </div>
         </div>
       </div>

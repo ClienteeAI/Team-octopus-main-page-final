@@ -6,7 +6,9 @@ import Blog from "./pages/Blog";
 import Article from "./pages/Article";
 import VideoGallery from "./pages/VideoGallery";
 import AuditModal from "./components/modals/AuditModal";
-import { useState } from "react";
+import PolicyModal from "./components/modals/PolicyModal";
+import CookieBanner from "./components/layout/CookieBanner";
+import { useState, useEffect } from "react";
 
 // Simple Skeleton for Other pages
 const Placeholder = ({ title }: { title: string }) => (
@@ -21,6 +23,16 @@ const Placeholder = ({ title }: { title: string }) => (
 
 export default function App() {
   const [isAuditOpen, setIsAuditOpen] = useState(false);
+  const [policyType, setPolicyType] = useState<"privacy" | "terms" | "dpa" | null>(null);
+
+  // Listen for open-policy events from footer
+  useEffect(() => {
+    const handleOpenPolicy = (e: any) => {
+      setPolicyType(e.detail);
+    };
+    window.addEventListener("open-policy", handleOpenPolicy);
+    return () => window.removeEventListener("open-policy", handleOpenPolicy);
+  }, []);
 
   return (
     <Router>
@@ -43,6 +55,14 @@ export default function App() {
         <Footer />
 
         <AuditModal isOpen={isAuditOpen} onClose={() => setIsAuditOpen(false)} />
+        
+        <PolicyModal 
+          isOpen={policyType !== null} 
+          onClose={() => setPolicyType(null)} 
+          type={policyType || "privacy"} 
+        />
+
+        <CookieBanner />
       </div>
     </Router>
   );
