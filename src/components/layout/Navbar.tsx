@@ -14,8 +14,8 @@ export default function Navbar({ onAuditClick }: { onAuditClick?: () => void }) 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { label: 'Řešení', path: '/#řešení' },
-    { label: 'Přínosy', path: '/#přínosy' },
+    { label: 'Řešení', path: '/#reseni' },
+    { label: 'Přínosy', path: '/#prinosy' },
     { label: 'AI audit', path: '#audit', onClick: onAuditClick },
     { label: 'O nás', path: '/o-nas' },
     { label: 'Blog', path: '/blog' },

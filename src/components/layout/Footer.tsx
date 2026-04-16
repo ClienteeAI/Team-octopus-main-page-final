@@ -28,8 +28,8 @@ export default function Footer() {
             <div>
               <h5 className="font-bold text-[11px] uppercase tracking-[0.3em] mb-10 text-octopus-gold">Navigace</h5>
               <ul className="space-y-5 text-sm font-bold text-octopus-navy/60">
-                <li><Link to="/#řešení" className="hover:text-octopus-navy transition-colors">Řešení</Link></li>
-                <li><Link to="/#přínosy" className="hover:text-octopus-navy transition-colors">Přínosy</Link></li>
+                <li><Link to="/#reseni" className="hover:text-octopus-navy transition-colors">Řešení</Link></li>
+                <li><Link to="/#prinosy" className="hover:text-octopus-navy transition-colors">Přínosy</Link></li>
                 <li><Link to="/o-nas" className="hover:text-octopus-navy transition-colors">O nás</Link></li>
                 <li><Link to="/blog" className="hover:text-octopus-navy transition-colors">Blog</Link></li>
                 <li><Link to="/videos" className="hover:text-octopus-navy transition-colors">Video</Link></li>
