@@ -24,7 +24,7 @@ const Placeholder = ({ title }: { title: string }) => (
 
 export default function App() {
   const [isAuditOpen, setIsAuditOpen] = useState(false);
-  const [policyType, setPolicyType] = useState<"privacy" | "terms" | "dpa" | null>(null);
+  const [policyType, setPolicyType] = useState<"privacy" | "terms" | null>(null);
 
   // Listen for open-policy events from footer
   useEffect(() => {

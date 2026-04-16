@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 interface PolicyModalProps {
   isOpen: boolean;
   onClose: () => void;
-  type: "privacy" | "terms" | "dpa";
+  type: "privacy" | "terms";
 }
 
 export default function PolicyModal({ isOpen, onClose, type }: PolicyModalProps) {
@@ -333,50 +333,166 @@ export default function PolicyModal({ isOpen, onClose, type }: PolicyModalProps)
             <h3 className="text-octopus-navy font-bold text-xl mb-4">13. Změna Podmínek a závěrečná ustanovení</h3>
             <p>Poskytovatel si vyhrazuje právo tyto Podmínky měnit. Změnu Podmínek oznámí Poskytovatel Uživateli e-mailem alespoň 14 dní před nabytím účinnosti změny. Uživatel má právo změnu odmítnout a smlouvu ke dni účinnosti změny vypovědět.</p>
           </section>
-        </div>
-      )
-    },
-    dpa: {
-      title: "Smlouva o zpracování (DPA)",
-      subtitle: "PŘÍLOHA Č. 1",
-      icon: Handshake,
-      body: (
-        <div className="space-y-8 text-octopus-navy/70 leading-relaxed font-medium text-sm">
-          <p className="italic text-octopus-navy/50">uzavřená dle čl. 28 nařízení Evropský parlament a Rady (EU) 2016/679 (GDPR)</p>
-          
-          <section>
-            <h3 className="text-octopus-navy font-bold text-lg mb-3 underline">1. Smluvní strany</h3>
-            <p><span className="font-bold">Správce:</span> Uživatel služby Team Octopus (zákazník)</p>
-            <p><span className="font-bold">Zpracovatel:</span> TEAM OCTOPUS s.r.o.</p>
-          </section>
 
-          <section>
-            <h3 className="text-octopus-navy font-bold text-lg mb-3 underline">2. Předmět zpracování</h3>
-            <p>Zpracovatel zpracovává údaje za účelem podpory náboru, správy kandidátů a využití AI nástrojů.</p>
-          </section>
-
-          <section>
-            <h3 className="text-octopus-navy font-bold text-lg mb-3 underline">8. Sub-zpracovatelé</h3>
-            <div className="space-y-4">
-              <div className="p-4 bg-octopus-cream rounded-xl">
-                <p className="font-bold text-octopus-navy mb-1">RTM Labs (RTM Labs s.r.o.)</p>
-                <p>Zajišťuje technický provoz a zpracování HR dat.</p>
+          {/* DPA Appendix */}
+          <div className="mt-20 pt-20 border-t-2 border-octopus-navy/10">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-12 h-12 rounded-xl bg-octopus-navy text-white flex items-center justify-center">
+                <Handshake size={24} />
               </div>
-              <div className="p-4 bg-octopus-cream rounded-xl">
-                <p className="font-bold text-octopus-navy mb-1">Clientee</p>
-                <p>Zpracovává pouze kontaktní a obchodní údaje.</p>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-octopus-gold mb-1">PŘÍLOHA Č. 1</p>
+                <h3 className="text-3xl font-bold text-octopus-navy tracking-tight">SMLOUVA O ZPRACOVÁNÍ OSOBNÍCH ÚDAJŮ (DPA)</h3>
               </div>
             </div>
-            <p className="mt-4 text-octopus-gold font-bold">🔔 Změna sub-zpracovatelů: Zpracovatel informuje Správce (např. e-mailem). Správce může vznést námitku do 10 dnů.</p>
-          </section>
 
-          <section>
-            <h3 className="text-octopus-navy font-bold text-lg mb-3 underline">13. Ukončení zpracování</h3>
-            <p>Po ukončení služby budou údaje smazány do 30 dnů, pokud zákon nevyžaduje delší uchování.</p>
-          </section>
+            <div className="space-y-10 text-octopus-navy/70 leading-relaxed font-medium text-sm">
+              <p className="italic text-octopus-navy/50">uzavřená dle čl. 28 nařízení Evropský parlament a Rady (EU) 2016/679 (GDPR) — FINÁLNÍ VERZE</p>
+              
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">1. Smluvní strany</h4>
+                <div className="space-y-4">
+                  <p><span className="font-bold text-octopus-navy">Správce:</span> Uživatel služby Team Octopus (zákazník)</p>
+                  <p><span className="font-bold text-octopus-navy">Zpracovatel:</span> TEAM OCTOPUS s.r.o., Příčná 1892/4, 110 00 Praha 1, IČO: 237 99 838</p>
+                </div>
+              </section>
 
-          <div className="border-t border-octopus-navy/10 pt-6">
-            <p className="font-bold text-octopus-navy">Důležité: Tato smlouva tvoří nedílnou součást obchodních podmínek a je účinná okamžikem jejich odsouhlasení.</p>
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">2. Předmět zpracování</h4>
+                <p>Zpracovatel zpracovává osobní údaje jménem Správce za účelem:</p>
+                <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+                  <li>podpory náboru zaměstnanců</li>
+                  <li>správy kandidátů</li>
+                  <li>automatizace komunikace</li>
+                  <li>využití nástrojů umělé inteligence</li>
+                </ul>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">3. Kategorie osobních údajů</h4>
+                <ul className="list-disc list-inside space-y-1 ml-2">
+                  <li>identifikační údaje</li>
+                  <li>kontaktní údaje</li>
+                  <li>profesní údaje (CV, zkušenosti)</li>
+                  <li>odpovědi z pohovorů</li>
+                </ul>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">4. Kategorie subjektů údajů</h4>
+                <ul className="list-disc list-inside space-y-1 ml-2">
+                  <li>uchazeči o zaměstnání</li>
+                  <li>případně zaměstnanci Správce</li>
+                </ul>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">5. Povaha a účel zpracování</h4>
+                <p>Zpracování probíhá automatizovaně prostřednictvím SaaS platformy s využitím AI nástrojů.</p>
+                <p className="mt-4 text-octopus-gold font-bold text-sm italic">👉 Výstupy AI mají pouze doporučující charakter.</p>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">6. Povinnosti Zpracovatele</h4>
+                <p>Zpracovatel se zavazuje zpracovávat osobní údaje pouze na základě doložených pokynů Správce. Smluvní strany sjednávají, že za pokyn Správce se považuje i samotné užívání funkcionalit Služby Správcem.</p>
+                <ul className="list-disc list-inside mt-4 space-y-1 ml-2">
+                  <li>zajistit důvěrnost</li>
+                  <li>přijmout odpovídající technická a organizační opatření</li>
+                  <li>vést evidenci incidentů</li>
+                </ul>
+                <p className="mt-4 text-sm italic opacity-60 italic">👉 Zpracovatel neprodleně informuje Správce, pokud by podle jeho názoru určitý pokyn porušoval právní předpisy o ochraně osobních údajů.</p>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">7. Součinnost a audit</h4>
+                <p>Zpracovatel umožní Správci ověření plnění povinností dle této smlouvy.</p>
+                <div className="mt-4 p-6 bg-octopus-cream rounded-2xl border border-octopus-navy/5 space-y-2">
+                  <p className="font-bold text-octopus-navy">Audit:</p>
+                  <ul className="list-disc list-inside space-y-1 ml-2 text-sm italic">
+                    <li>probíhá na náklady Správce</li>
+                    <li>musí být oznámen alespoň 14 dní předem</li>
+                    <li>probíhá v přiměřeném rozsahu tak, aby nedošlo k narušení provozu</li>
+                  </ul>
+                </div>
+                <p className="mt-4">Zpracovatel může splnění povinností doložit zejména bezpečnostní dokumentací, prohlášeními sub-zpracovatelů nebo jinými vhodnými prostředky.</p>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">8. Sub-zpracovatelé</h4>
+                <p>Zpracovatel je oprávněn zapojit sub-zpracovatele.</p>
+                <div className="mt-6 space-y-4">
+                  <div className="p-6 border border-octopus-navy/5 rounded-2xl">
+                    <p className="font-bold text-octopus-navy mb-1">Hlavní sub-zpracovatel: RTM Labs (RTM Labs s.r.o.)</p>
+                    <p className="text-xs text-octopus-navy/50 mb-3">Příčná 1892/4, 110 00 Praha 1, IČO: 198 24 343</p>
+                    <p className="italic">zajišťuje technický provoz a zpracování HR dat</p>
+                  </div>
+                  <div className="p-6 border border-octopus-navy/5 rounded-2xl">
+                    <p className="font-bold text-octopus-navy mb-1">Další sub-zpracovatel: Clientee</p>
+                    <p className="italic">zpracovává pouze kontaktní a obchodní údaje</p>
+                  </div>
+                </div>
+                <div className="mt-6 p-6 bg-octopus-gold/5 border border-octopus-gold/20 rounded-2xl">
+                  <p className="text-octopus-gold font-bold mb-2">🔔 Změna sub-zpracovatelů:</p>
+                  <p className="text-sm">Zpracovatel informuje Správce (e-mailem nebo přes web). Správce má právo vznést námitku do 10 dnů. Pokud námitku nevznese, má se za to, že se zapojením souhlasí.</p>
+                </div>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">9. Předávání mimo EU</h4>
+                <p>Pokud dochází k předávání mimo EU, jsou použity standardní smluvní doložky (SCC) nebo jiné odpovídající mechanismy.</p>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">10. Zabezpečení údajů</h4>
+                <p>Zpracovatel přijímá opatření jako omezení přístupu, řízení oprávnění, zabezpečení systémů a zálohování dat. Zpracovatel zajistí, aby osoby oprávněné zpracovávat osobní údaje byly vázány povinností mlčenlivosti.</p>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">11. Porušení zabezpečení</h4>
+                <p>Zpracovatel oznámí incident bez zbytečného odkladu a poskytne součinnost Správci.</p>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">12. Práva subjektů údajů</h4>
+                <p>Zpracovatel pomáhá Správci při vyřizování žádostí subjektů údajů. Primární odpovědnost nese Správce.</p>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">13. Ukončení zpracování</h4>
+                <p>Po ukončení služby budou osobní údaje smazány do 30 dnů. Na žádost Správce může být výmaz proveden i dříve. Povinnost neplatí, pokud právní předpisy vyžadují delší uchování.</p>
+              </section>
+
+              <div className="h-px bg-octopus-navy/5" />
+
+              <section>
+                <h4 className="text-octopus-navy font-bold text-lg mb-4 underline">14. Závěrečná ustanovení</h4>
+                <p>Tato smlouva tvoří nedílnou součást obchodních podmínek a je účinná okamžikem odsouhlasení Podmínek.</p>
+              </section>
+            </div>
           </div>
         </div>
       )

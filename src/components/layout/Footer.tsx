@@ -68,12 +68,6 @@ export default function Footer() {
               Podmínky
             </button>
             <button 
-              onClick={() => window.dispatchEvent(new CustomEvent('open-policy', { detail: 'dpa' }))}
-              className="hover:text-octopus-navy transition-colors whitespace-nowrap text-octopus-gold/60 hover:text-octopus-gold"
-            >
-              Smlouva o zpracování (DPA)
-            </button>
-            <button 
               onClick={() => window.dispatchEvent(new CustomEvent('open-cookie-settings'))}
               className="hover:text-octopus-navy transition-colors whitespace-nowrap"
             >
