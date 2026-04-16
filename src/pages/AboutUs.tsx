@@ -54,6 +54,9 @@ export default function AboutUs() {
                     Za projektem stojí tým lidí, kteří mají přímou zkušenost s tím, jak náročné je dnes najít spolehlivé zaměstnance — obzvlášť pro menší a střední firmy, kde často řeší nábor majitel nebo management vedle své hlavní práce.
                   </p>
                   <p>
+                    Právě proto vzniklo řešení, které pomáhá automatizovat první kontakt s kandidáty, předvýběr i část náborového procesu. Kandidáti dostanou odpověď okamžitě, mohou absolvovat první pohovor kdykoliv a firmy získají více času na to nejdůležitější — vybrat si ty správné lidi.
+                  </p>
+                  <p>
                     Naše řešení vychází z reálných zkušeností a postupně ho rozvíjíme ve spolupráci s firmami, které chtějí svůj nábor zjednodušit a zefektivnit.
                   </p>
                 </div>
@@ -73,7 +76,7 @@ export default function AboutUs() {
                 <BrainCircuit className="text-octopus-gold mb-5 w-9 h-9" />
                 <h4 className="text-2xl font-bold mb-4 tracking-tight">AI + Lidský přístup</h4>
                 <p className="text-white/55 leading-relaxed font-medium text-sm">
-                  Právě proto vzniklo řešení, které pomáhá automatizovat první kontakt s kandidáty, předvýběr i část náborového procesu. Kandidáti dostanou odpověď okamžitě, mohou absolvovat první pohovor kdykoliv.
+                  Kombinací lidského úsudku a výkonu AI nástrojů získáte více času na to nejdůležitější — vybrat si ty správné lidi do vašeho týmu.
                 </p>
               </motion.div>
 
