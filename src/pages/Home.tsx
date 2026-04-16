@@ -142,7 +142,7 @@ export default function Home() {
       <div className="h-20 bg-white" />
 
       {/* 3 AI Phases */}
-      <section id="řešení" className="py-40 bg-white relative overflow-hidden">
+      <section id="reseni" className="py-40 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
             <div className="max-w-2xl">
@@ -215,7 +215,7 @@ export default function Home() {
       <div className="h-20 bg-[#0F172A]" />
 
       {/* Benefits - ROI focused */}
-      <section id="přínosy" className="py-40 bg-octopus-navy text-octopus-cream relative overflow-hidden">
+      <section id="prinosy" className="py-40 bg-octopus-navy text-octopus-cream relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
