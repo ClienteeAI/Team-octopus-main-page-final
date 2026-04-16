@@ -4,19 +4,19 @@ import { Quote, Star } from "lucide-react";
 const testimonials = [
   {
     name: "Marek Novák",
-    role: "HR Director, TechnoLogix",
+    role: "HR Director",
     content: "Dřív jsme v náboru tápali a pálili peníze. Team Octopus nám otevřel oči. Teď přesně víme, koho hledat a jak ho získat. Naše týmy jsou teď o 100 % výkonnější.",
     rating: 5
   },
   {
     name: "Jana Dvořáková",
-    role: "CEO, GreenMotive",
+    role: "CEO",
     content: "Nejde jen o nábor, jde o jistotu. S Team Octopus jsme přestali dělat chyby, které nás stály miliony. Je to rozdíl mezi 'zkoušením' a 'vítězstvím'.",
     rating: 5
   },
   {
     name: "Petr Svoboda",
-    role: "Head of Talent, InnoVibe",
+    role: "Head of Talent",
     content: "Konečně partner, který nemluví v hádankách, ale doručuje výsledky. Vidí v lidech potenciál, který my jsme neviděli. Naše fluktuace je minulostí.",
     rating: 5
   }
