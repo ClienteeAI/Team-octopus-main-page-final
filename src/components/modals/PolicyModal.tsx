@@ -13,7 +13,8 @@ export default function PolicyModal({ isOpen, onClose, type }: PolicyModalProps)
     privacy: {
       title: "Zásady ochrany osobních údajů",
       subtitle: "TEAM OCTOPUS",
-      icon: Shie      body: (
+      icon: Shield,
+      body: (
         <div className="space-y-8 text-octopus-navy/70 leading-relaxed font-medium">
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">1. Správce osobních údajů</h3>
