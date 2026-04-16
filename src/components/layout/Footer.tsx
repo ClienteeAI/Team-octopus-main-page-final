@@ -38,7 +38,15 @@ export default function Footer() {
             <div>
               <h5 className="font-bold text-[11px] uppercase tracking-[0.3em] mb-10 text-octopus-gold">Kontakt</h5>
               <ul className="space-y-5 text-sm font-bold text-octopus-navy/60">
-                <li className="hover:text-octopus-navy transition-colors cursor-pointer">obchod@teamoctopus.cz</li>
+                <li className="font-bold text-octopus-navy/80">TEAM OCTOPUS s.r.o.</li>
+                <li>Příčná 1892/4, Nové Město</li>
+                <li>110 00 Praha 1</li>
+                <li>IČO: 237 99 838</li>
+                <li>
+                  <a href="mailto:obchod@teamoctopus.cz" className="hover:text-octopus-navy transition-colors text-octopus-gold/70 hover:text-octopus-gold">
+                    obchod@teamoctopus.cz
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

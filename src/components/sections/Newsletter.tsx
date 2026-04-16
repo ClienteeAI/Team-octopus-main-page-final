@@ -122,6 +122,19 @@ export default function Newsletter() {
           <p className="mt-10 text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">
             Stvrtzením odběru si zajistíte tajnou zbraň pro svůj nábor.
           </p>
+
+          {/* Company contact details */}
+          <div className="mt-24 pt-16 border-t border-white/5 flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 text-white/30 text-xs font-bold uppercase tracking-[0.2em]">
+            <span className="text-white/50 font-bold">TEAM OCTOPUS s.r.o.</span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
+            <span>Příčná 1892/4, Nové Město, 110 00 Praha 1</span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
+            <span>IČO: 237 99 838</span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
+            <a href="mailto:obchod@teamoctopus.cz" className="text-octopus-gold/70 hover:text-octopus-gold transition-colors">
+              obchod@teamoctopus.cz
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>
