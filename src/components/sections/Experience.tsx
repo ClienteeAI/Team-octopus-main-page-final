@@ -4,7 +4,7 @@ import { Quote, Award, Users2, BrainCircuit } from "lucide-react";
 
 export default function ExperienceSection() {
   return (
-    <section className="py-40 bg-octopus-cream/30 relative overflow-hidden">
+    <section id="o-nas" className="py-40 bg-octopus-cream/30 relative overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-octopus-gold/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-octopus-blue/5 blur-[100px] rounded-full pointer-events-none" />

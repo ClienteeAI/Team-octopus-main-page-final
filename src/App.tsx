@@ -9,6 +9,7 @@ import AuditModal from "./components/modals/AuditModal";
 import PolicyModal from "./components/modals/PolicyModal";
 import CookieBanner from "./components/layout/CookieBanner";
 import AboutUs from "./pages/AboutUs";
+import ScrollManager from "./components/layout/ScrollManager";
 import { useState, useEffect } from "react";
 
 // Simple Skeleton for Other pages
@@ -37,6 +38,7 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollManager />
       <div className="min-h-screen bg-octopus-cream selection:bg-octopus-gold selection:text-octopus-navy font-sans antialiased overflow-x-hidden">
         {/* Velvet Texture Overlay */}
         <div className="fixed inset-0 pointer-events-none opacity-[0.04] mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/felt.png')] z-50" />
