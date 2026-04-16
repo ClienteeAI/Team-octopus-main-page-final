@@ -194,44 +194,145 @@ export default function PolicyModal({ isOpen, onClose, type }: PolicyModalProps)
         <div className="space-y-8 text-octopus-navy/70 leading-relaxed font-medium">
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">1. Úvodní ustanovení</h3>
-            <p>Tyto obchodní podmínky upravují práva a povinnosti mezi TEAM OCTOPUS s.r.o. (Poskytovatel) a zákazníkem (Uživatel).</p>
+            <p>Tyto obchodní podmínky (dále jen „Podmínky“) upravují práva a povinnosti mezi:</p>
+            <div className="mt-4 p-6 bg-octopus-cream rounded-2xl border border-octopus-navy/5">
+              <p className="font-bold text-octopus-navy">TEAM OCTOPUS s.r.o.</p>
+              <p>se sídlem: Příčná 1892/4, Nové Město, 110 00 Praha 1</p>
+              <p>IČO: 237 99 838</p>
+              <p>e-mail: obchod@teamoctopus.cz</p>
+              <p className="text-xs mt-2 opacity-50">(dále jen „Poskytovatel“)</p>
+            </div>
+            <p className="mt-4">a zákazníkem (dále jen „Uživatel“).</p>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">2. Předmět služby</h3>
-            <p>Poskytovatel poskytuje online nástroj zaměřený na podporu náboru, správu kandidátů, automatizaci komunikace a využití umělé inteligence (AI). Služba je poskytována formou SaaS.</p>
+            <p>Poskytovatel poskytuje online nástroj zaměřený na:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>podporu náboru zaměstnanců</li>
+              <li>správu kandidátů</li>
+              <li>automatizaci komunikace s uchazeči</li>
+              <li>využití prvků umělé inteligence (AI)</li>
+            </ul>
+            <p className="mt-4 font-bold text-octopus-navy">Služba je poskytována formou SaaS (Software as a Service).</p>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">3. Uzavření smlouvy</h3>
-            <p>Smlouva vzniká odesláním objednávky, jejím potvrzením nebo zaplacením služby. Uživatel potvrzuje, že se seznámil s těmito Podmínkami.</p>
+            <p>Smlouva vzniká:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>odesláním objednávky</li>
+              <li>potvrzením objednávky</li>
+              <li>nebo zaplacením služby</li>
+            </ul>
+            <p className="mt-4">Smlouva může být uzavřena i elektronicky. Uživatel potvrzuje, že se seznámil s Podmínkami a souhlasí s nimi.</p>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">4. Cena a platební podmínky</h3>
-            <p>Cena je uvedena na webu. Platba probíhá online přes Stripe. Služba je aktivována po připsání platby.</p>
+            <ul className="list-disc list-inside space-y-1 ml-2">
+              <li>Cena je uvedena na webu</li>
+              <li>Platba probíhá online (např. kartou přes Stripe)</li>
+              <li>Služba je aktivována po připsání platby</li>
+            </ul>
+            <p className="mt-4 text-sm italic opacity-60">Poskytovatel si vyhrazuje právo změny ceny.</p>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">5. Charakter služby a AI</h3>
-            <div className="p-6 bg-octopus-gold/5 border border-octopus-gold/20 rounded-2xl space-y-2">
-              <p className="text-octopus-gold font-bold text-sm">👉 Výstupy AI mají pouze doporučující charakter.</p>
-              <p className="text-octopus-gold font-bold text-sm">👉 Poskytovatel nenese odpovědnost za rozhodnutí Uživatele.</p>
+            <p>Služba využívá prvky umělé inteligence.</p>
+            <div className="mt-4 p-6 bg-octopus-gold/5 border border-octopus-gold/20 rounded-2xl space-y-3">
+              <p className="text-octopus-gold font-bold text-sm">👉 Výstupy AI mají pouze doporučující charakter</p>
+              <p className="text-octopus-gold font-bold text-sm">👉 Poskytovatel nenese odpovědnost za rozhodnutí Uživatele</p>
               <p className="text-sm">Uživatel bere na vědomí, že AI může vykazovat nepřesnosti.</p>
             </div>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">6. Odpovědnost za nábor</h3>
-            <p>Uživatel odpovídá za výběr zaměstnanců a dodržování právních předpisů. Poskytovatel nezasahuje do rozhodování.</p>
+            <p>Uživatel odpovídá za:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>výběr zaměstnanců</li>
+              <li>dodržování právních předpisů</li>
+              <li>nediskriminační přístup</li>
+            </ul>
+            <p className="mt-4">Poskytovatel nezasahuje do rozhodování.</p>
           </section>
 
           <section>
-            <h3 className="text-octopus-navy font-bold text-xl mb-4">12. Ukončení služby a odstoupení</h3>
-            <p>Uživatel může službu kdykoliv ukončit. Ukončení nabývá účinnosti ke konci aktuálního fakturačního období. Služba je určena primárně pro podnikatele.</p>
+            <h3 className="text-octopus-navy font-bold text-xl mb-4">7. Povinnosti uživatele</h3>
+            <p>Uživatel se zavazuje:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>používat službu v souladu s právními předpisy</li>
+              <li>nezneužívat službu</li>
+              <li>mít oprávnění zpracovávat osobní údaje kandidátů</li>
+            </ul>
           </section>
-          
-          <p className="text-sm italic opacity-60">V případě dotazů nás kontaktujte na: obchod@teamoctopus.cz</p>
+
+          <section>
+            <h3 className="text-octopus-navy font-bold text-xl mb-4">8. Zpracování osobních údajů</h3>
+            <p>Poskytovatel zpracovává osobní údaje:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>jako správce (u zákazníků)</li>
+              <li>jako zpracovatel (u kandidátů)</li>
+            </ul>
+            <p className="mt-4">Podrobnosti upravují Zásady ochrany osobních údajů a Smlouva o zpracování osobních údajů (DPA), která tvoří přílohu těchto Podmínek.</p>
+            <p className="mt-4 text-octopus-gold font-bold text-sm">👉 Odsouhlasením těchto Podmínek Uživatel zároveň souhlasí s DPA.</p>
+          </section>
+
+          <section>
+            <h3 className="text-octopus-navy font-bold text-xl mb-4">9. Využití externích nástrojů</h3>
+            <p>Pro poskytování služby může Poskytovatel využívat třetí strany, zejména: RTM Labs, Clientee, Stripe.</p>
+            <p className="mt-4 text-sm italic opacity-60">👉 Poskytovatel je oprávněn využívat i další obdobné nástroje. Aktuální seznam zpracovatelů je uveden v Zásadách ochrany osobních údajů.</p>
+          </section>
+
+          <section>
+            <h3 className="text-octopus-navy font-bold text-xl mb-4">10. Dostupnost služby</h3>
+            <p>Poskytovatel negarantuje nepřetržitou dostupnost služby.</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>Může docházet k plánované údržbě, o které bude Uživatel předem informován.</li>
+              <li>Uživatel nemá nárok na náhradu škody ani slevu z ceny služby z důvodu plánované údržby oznámené předem.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 className="text-octopus-navy font-bold text-xl mb-4">11. Omezení odpovědnosti</h3>
+            <p>Poskytovatel neodpovídá za ušlý zisk, nepřímé škody nebo rozhodnutí Uživatele. Maximální odpovědnost Poskytovatele je omezena výší částky zaplacené Uživatelem.</p>
+          </section>
+
+          <section>
+            <h3 className="text-octopus-navy font-bold text-xl mb-4">12. Ukončení služby a odstoupení od smlouvy</h3>
+            <div className="space-y-4">
+              <div>
+                <p className="font-bold text-octopus-navy">12.1 Ukončení služby</p>
+                <p>Uživatel může službu kdykoliv ukončit. Poskytovatel může službu ukončit zejména v případě porušení těchto Podmínek ze strany Uživatele.</p>
+              </div>
+              <div>
+                <p className="font-bold text-octopus-navy">12.2 Předplatné a fakturační období</p>
+                <p>Ukončení služby nabývá účinnosti ke konci aktuálního fakturačního období. Do té doby má Uživatel k službě plný přístup.</p>
+                <p className="mt-2 text-octopus-gold font-bold text-sm">👉 Služba je účtována vždy na celé fakturační období. Poskytovatel není povinen vracet již uhrazené platby za probíhající fakturační období.</p>
+              </div>
+              <div>
+                <p className="font-bold text-octopus-navy">12.3 Způsob ukončení</p>
+                <p>Uživatel může službu ukončit prostřednictvím uživatelského účtu nebo zasláním žádosti na e-mail: <span className="font-bold text-octopus-navy">obchod@teamoctopus.cz</span></p>
+              </div>
+              <div>
+                <p className="font-bold text-octopus-navy">12.4 Nakládání s daty po ukončení služby</p>
+                <p>Po ukončení služby je Poskytovatel oprávněn uživatelský účet včetně všech dat po uplynutí 30 dnů smazat, pokud právní předpisy nestanoví jinak. Po tuto dobu má Uživatel možnost si data vyexportovat.</p>
+              </div>
+              <div>
+                <p className="font-bold text-octopus-navy">12.5 Odstoupení od smlouvy (spotřebitel)</p>
+                <p>Uživatel, který je spotřebitelem, má právo odstoupit od smlouvy do 14 dnů od jejího uzavření.</p>
+                <p className="mt-2 text-sm italic opacity-60">👉 Uživatel bere na vědomí, že pokud na jeho žádost dojde k zahájení poskytování služby před uplynutím této lhůty, nemá nárok na vrácení poměrné části ceny za již poskytnuté plnění.</p>
+              </div>
+              <p className="font-bold text-octopus-navy pt-2">12.6 Charakter služby: Služba je určena primárně pro podnikatele.</p>
+            </div>
+          </section>
+
+          <section>
+            <h3 className="text-octopus-navy font-bold text-xl mb-4">13. Změna Podmínek a závěrečná ustanovení</h3>
+            <p>Poskytovatel si vyhrazuje právo tyto Podmínky měnit. Změnu Podmínek oznámí Poskytovatel Uživateli e-mailem alespoň 14 dní před nabytím účinnosti změny. Uživatel má právo změnu odmítnout a smlouvu ke dni účinnosti změny vypovědět.</p>
+          </section>
         </div>
       )
     },
