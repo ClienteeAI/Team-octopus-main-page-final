@@ -13,8 +13,7 @@ export default function PolicyModal({ isOpen, onClose, type }: PolicyModalProps)
     privacy: {
       title: "Zásady ochrany osobních údajů",
       subtitle: "TEAM OCTOPUS",
-      icon: Shield,
-      body: (
+      icon: Shie      body: (
         <div className="space-y-8 text-octopus-navy/70 leading-relaxed font-medium">
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">1. Správce osobních údajů</h3>
@@ -56,14 +55,14 @@ export default function PolicyModal({ isOpen, onClose, type }: PolicyModalProps)
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">3. Postavení při zpracování údajů</h3>
-            <div className="space-y-4">
-              <div className="flex gap-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-octopus-blue mt-2.5 shrink-0" />
-                <p><span className="font-bold text-octopus-navy">Vztah ke klientům (firmám):</span> Vůči zákazníkům vystupujeme jako správce osobních údajů.</p>
+            <div className="space-y-6">
+              <div>
+                <p className="font-bold text-octopus-navy mb-2">🔹 Vztah ke klientům (firmám)</p>
+                <p>Vůči zákazníkům vystupujeme jako správce osobních údajů</p>
               </div>
-              <div className="flex gap-4">
-                <div className="w-1.5 h-1.5 rounded-full bg-octopus-blue mt-2.5 shrink-0" />
-                <p><span className="font-bold text-octopus-navy">Vztah ke kandidátům:</span> Vůči kandidátům vystupujeme jako zpracovatel osobních údajů, a to jménem našich klientů.</p>
+              <div>
+                <p className="font-bold text-octopus-navy mb-2">🔹 Vztah ke kandidátům</p>
+                <p>Vůči kandidátům vystupujeme jako zpracovatel osobních údajů, a to jménem našich klientů.</p>
               </div>
             </div>
           </section>
@@ -106,42 +105,83 @@ export default function PolicyModal({ isOpen, onClose, type }: PolicyModalProps)
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-sm italic opacity-60">👉 Každý z těchto subjektů zpracovává pouze údaje nezbytné pro daný účel. Aktuální seznam zpracovatelů může být průběžně aktualizován.</p>
+            <p className="mt-6 text-sm italic opacity-60">👉 Každý z těchto subjektů zpracovává pouze údaje nezbytné pro daný účel.</p>
+            <p className="text-sm italic opacity-60">👉 Aktuální seznam zpracovatelů může být průběžně aktualizován.</p>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">7. Předávání mimo EU</h3>
-            <p>V případě, že dochází k přenosu osobních údajů mimo Evropskou unii, je zajištěna odpovídající ochrana údajů, zejména prostřednictvím standardních smluvních doložek (SCC) nebo jiných odpovídajících mechanismů.</p>
+            <p>V případě, že dochází k přenosu osobních údajů mimo Evropskou unii, je zajištěna odpovídající ochrana údajů, zejména prostřednictvím:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>standardních smluvních doložek (SCC)</li>
+              <li>nebo jiných odpovídajících mechanismů</li>
+            </ul>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">8. Doba uchování</h3>
-            <p>Osobní údaje uchováváme po dobu trvání smluvního vztahu, po dobu nezbytnou pro plnění právních povinností, případně dle pokynů klienta.</p>
+            <p>Osobní údaje uchováváme:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>po dobu trvání smluvního vztahu</li>
+              <li>po dobu nezbytnou pro plnění právních povinností</li>
+              <li>případně dle pokynů klienta</li>
+            </ul>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">9. Práva subjektů údajů</h3>
-            <p>Subjekt údajů má právo na přístup, opravu, výmaz, omezení zpracování, přenositelnost údajů, vznést námitku nebo podat stížnost u Úřadu pro ochranu osobních údajů.</p>
+            <p>Subjekt údajů má právo:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2 mb-4">
+              <li>na přístup k osobním údajům</li>
+              <li>na opravu</li>
+              <li>na výmaz</li>
+              <li>na omezení zpracování</li>
+              <li>na přenositelnost údajů</li>
+              <li>vznést námitku proti zpracování</li>
+              <li>podat stížnost u Úřad pro ochranu osobních údajů</li>
+            </ul>
             <div className="mt-4 p-6 bg-octopus-gold/5 border border-octopus-gold/20 rounded-2xl">
-              <p className="text-octopus-gold font-bold mb-2 uppercase tracking-wider text-xs">Důležité upozornění:</p>
-              <p className="text-sm">V případech, kdy vystupujeme jako zpracovatel (zejména u údajů o kandidátech), uplatňujte svá práva přímo u příslušného správce, kterému jste své údaje poskytli (typicky zaměstnavatel). Jako zpracovatel jsme oprávněni tyto žádosti předat správci.</p>
+              <p className="text-octopus-gold font-bold mb-2 uppercase tracking-wider text-xs">👉 Důležité upozornění:</p>
+              <p className="text-sm mb-4">V případech, kdy vystupujeme jako zpracovatel (zejména u údajů o kandidátech), uplatňujte svá práva přímo u příslušného správce, kterému jste své údaje poskytli (typicky zaměstnavatel nebo firma, u které se ucházíte o práci).</p>
+              <p className="text-sm">Jako zpracovatel jsme oprávněni tyto žádosti předat správci, který je odpovědný za jejich vyřízení.</p>
             </div>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">10. Zabezpečení osobních údajů</h3>
-            <p>Používáme vhodná technická a organizační opatření, zejména omezení přístupu k údajům, řízení přístupových oprávnění a zabezpečení systémů.</p>
+            <p>Používáme vhodná technická a organizační opatření k ochraně osobních údajů. Uplatňujeme zejména:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2">
+              <li>omezení přístupu k údajům</li>
+              <li>řízení přístupových oprávnění</li>
+              <li>zabezpečení systémů</li>
+            </ul>
+            <p className="mt-4 text-sm italic opacity-60">👉 K osobním údajům mají přístup pouze oprávněné osoby a subjekty nezbytné pro poskytování služby.</p>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">11. Cookies</h3>
-            <p>Webové stránky používají cookies za účelem zajištění funkčnosti, analýzy návštěvnosti a marketingu.</p>
-            <p className="mt-2 text-sm italic opacity-60">👉 Cookies, které nejsou nezbytné, jsou ukládány pouze na základě souhlasu uživatele prostřednictvím cookie lišty.</p>
+            <p>Webové stránky používají cookies za účelem:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 ml-2 mb-4">
+              <li>zajištění správné funkčnosti webu</li>
+              <li>analýzy návštěvnosti</li>
+              <li>marketingových aktivit</li>
+            </ul>
+            <p>Cookies jsou malé textové soubory, které se ukládají do zařízení uživatele při návštěvě webu.</p>
+            <div className="mt-4 space-y-2">
+              <p>Rozlišujeme následující typy cookies:</p>
+              <ul className="list-disc list-inside ml-2">
+                <li>Nezbytné cookies – nutné pro základní funkčnost webu</li>
+                <li>Analytické cookies – slouží k analýze návštěvnosti (např. Google Analytics)</li>
+                <li>Marketingové cookies – slouží k personalizaci reklam a marketingu</li>
+              </ul>
+            </div>
+            <p className="mt-4 text-sm italic opacity-60">👉 Cookies, které nejsou nezbytné, jsou ukládány pouze na základě souhlasu uživatele prostřednictvím cookie lišty.</p>
+            <p className="text-sm italic opacity-60">👉 Uživatel může svůj souhlas kdykoliv změnit nebo odvolat prostřednictvím nastavení cookies na webu.</p>
           </section>
 
           <section>
             <h3 className="text-octopus-navy font-bold text-xl mb-4">12. Kontakt</h3>
-            <p>V případě dotazů nás kontaktujte na: <span className="text-octopus-navy font-bold">obchod@teamoctopus.cz</span></p>
+            <p>V případě dotazů ohledně ochrany osobních údajů nás můžete kontaktovat: <span className="text-octopus-navy font-bold">obchod@teamoctopus.cz</span></p>
           </section>
         </div>
       )
