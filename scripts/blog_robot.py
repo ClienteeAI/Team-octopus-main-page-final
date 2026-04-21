@@ -1,86 +1,124 @@
 import os
-import re
+import datetime
 import json
 import requests
-import datetime
+import re
 import sys
-from pathlib import Path
+from openai import OpenAI
 from dotenv import load_dotenv
 
-# Force UTF-8 encoding for stdout to handle Czech characters on Windows
+# Reconfigure stdout to handle UTF-8 for Czech characters
 if sys.stdout.encoding != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8')
 
-# Try to import openai, but don't fail immediately so we can show message to user
-try:
-    from openai import OpenAI
-except ImportError:
-    print("Error: 'openai' library not found. Run: pip install openai python-dotenv requests")
-
-# Load environment variables
 load_dotenv()
 
-# --- CONFIGURATION ---
+# Configuration
+ARTICLES_FILE = "src/data/articles.ts"
+BLOG_IMAGE_DIR = "public/blog/"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-ARTICLES_FILE = Path("src/data/articles.ts")
-IMAGES_DIR = Path("public/blog")
-PROJECT_ROOT = Path(__file__).parent.parent
 
-# --- TOPICS POOL ---
 HR_TOPICS = [
-    "Jak napsat inzerát, který přitáhne ty správné lidi",
-    "Onboarding: Prvních 90 dní nového zaměstnance",
-    "Jak správně číst v životopisech a poznat 'red flags'",
-    "Kariérní web jako výkladní skříň vaší firmy",
-    "Moderní trendy v náboru pro rok 2026",
-    "Jak vést pracovní pohovor, aby se kandidát cítil dobře",
-    "Zaměstnanecké benefity: Co dnes lidé skutečně chtějí?",
-    "Role firemní kultury v náborovém procesu",
-    "Jak si udržet talenty v konkurenčním prostředí",
-    "Employer Branding: Jak být vidět na trhu práce"
+    "Jak vytvořit náborový web, který skutečně prodává pracovní pozice",
+    "Onboarding nového zaměstnance: Prvních 90 dní rozhoduje o úspěchu",
+    "Jak správně číst v životopisech a odhalit skrytý potenciál",
+    "Moderní inzeráty: Co v nich dnes nesmí chybět a co je přežitek",
+    "Psychologie výběrového pohovoru: Jak se ptát a co skutečně sledovat",
+    "Budování employer brandingu aneb proč k vám lidé (ne)chtějí nastoupit",
+    "Jak napsat perfektní CV v roce 2026: Průvodce pro kandidáty",
+    "Automatizace v HR: Role umělé inteligence v náboru",
+    "Retence zaměstnanců: Jak si udržet ty nejlepší talenty ve firmě",
+    "Kultura zpětné vazby jako nástroj pro růst celé organizace"
 ]
 
 class BlogRobot:
-    def __init__(self, api_key):
-        self.client = OpenAI(api_key=api_key)
+    def __init__(self):
+        if not OPENAI_API_KEY:
+            raise ValueError("OPENAI_API_KEY nebyl nalezen v .env souboru!")
+        self.client = OpenAI(api_key=OPENAI_API_KEY)
 
     def generate_article(self):
-        print("Generuji tema a obsah clanku...")
+        # Pick topic based on day
         topic = HR_TOPICS[datetime.datetime.now().day % len(HR_TOPICS)]
-        
-        prompt = f"""
-        Jsi expert na Human Resources a nábor zaměstnanců. Napiš hloubkový, detailní vzdělávací článek na téma: "{topic}".
-        
-        Požadavky:
-        1. Jazyk: Profesionální, ale velmi čtivá čeština.
-        2. Struktura: Nadpis (H2), detailní úvod, několik hlavních sekcí s podnadpisy (H3), seznamy (UL/LI), praktické příklady a závěr.
-        3. Formát: HTML tagy (h2, h3, p, ul, li, strong).
-        4. Obsah: Článek MUSÍ být velmi dlouhý (alespoň 1000 slov). Jdi do hloubky, rozebírej psychologii, procesy, časté chyby a osvědčené postupy.
-        5. Cíl: Čtenář by měl mít pocit, že se naučil vše podstatné o daném tématu. Čtení by mělo zabrat alespoň 6-8 minut.
-        
-        Vrať výsledek v JSON formátu s těmito klíči:
-        - title: Atraktivní nadpis článku
-        - excerpt: Poutavý úvod (cca 3-4 věty)
-        - content: Celý HTML obsah článku (minimálně 1000 slov)
-        - category: Jedno slovo (např. Nábor, Kariéra, Management)
-        - readTime: "8 min čtení"
-        """
+        print(f"Generuji článek na téma: {topic}")
 
-        response = self.client.chat.completions.create(
+        # STEP 1: Generate Detailed Outline
+        outline_prompt = f"""
+        Jsi expert na HR a SEO. Vytvoř detailní osnovu pro hloubkový vzdělávací článek na téma: "{topic}".
+        Osnova musí obsahovat:
+        1. Poutavý SEO titulek (H2)
+        2. Detailní úvod
+        3. Alespoň 5 hlavních sekcí (H3), které jdou do hloubky
+        4. Podsekce (H4) pro každou hlavní sekci
+        5. Závěr s praktickými kroky
+        
+        Vrať pouze JSON se seznamem 'sections', kde každý prvek má 'title' a 'description' (co v té sekci má být).
+        """
+        
+        outline_res = self.client.chat.completions.create(
             model="gpt-4o",
-            messages=[{"role": "user", "content": prompt}],
+            messages=[{"role": "system", "content": "Jsi zkušený HR ředitel a copywriter."},
+                      {"role": "user", "content": outline_prompt}],
             response_format={"type": "json_object"}
         )
+        outline = json.loads(outline_res.choices[0].message.content)
         
-        article_data = json.loads(response.choices[0].message.content)
-        article_data['date'] = self._get_czech_date()
-        article_data['id'] = self._generate_id(article_data['title'])
+        # STEP 2: Generate Content for each section
+        full_content = ""
+        actual_sections = outline.get('sections', [])
+        print(f"Osnova připravena ({len(actual_sections)} sekcí). Začínám psát obsah...")
+
+        for i, section in enumerate(actual_sections):
+            s_title = section.get('title', f'Sekce {i+1}')
+            s_desc = section.get('description', section.get('desc', section.get('details', 'Detailní rozbor tématu')))
+            
+            print(f"  Píšu sekci {i+1}: {s_title}...")
+            content_prompt = f"""
+            Téma článku: {topic}
+            Sekce k napsání: {s_title}
+            Co v sekci pokrýt: {s_desc}
+            
+            Pravidla:
+            1. Používej HTML tagy (p, h3, h4, ul, li, strong).
+            2. Piš v profesionální, ale čtivé češtině.
+            3. Tato sekce MUSÍ být velmi dlouhá (alespoň 250-300 slov). Buď velmi konkrétní, rozebírej detaily, uváděj příklady.
+            4. Neopakuj se.
+            """
+            
+            sect_res = self.client.chat.completions.create(
+                model="gpt-4o",
+                messages=[{"role": "system", "content": "Jsi nejlepší český HR blogger. Píšeš odborně a do hloubky."},
+                          {"role": "user", "content": content_prompt}]
+            )
+            full_content += sect_res.choices[0].message.content + "\n\n"
+
+        # STEP 3: Generate Title, Excerpt and Meta
+        meta_prompt = f"Na základě tohoto obsahu vytvoř JSON s klíči 'title', 'excerpt' (3 věty) a 'category'.\n\nObsah:\n{full_content[:1000]}"
+        meta_res = self.client.chat.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "user", "content": meta_prompt}],
+            response_format={"type": "json_object"}
+        )
+        meta = json.loads(meta_res.choices[0].message.content)
+
+        word_count = len(re.findall(r'\w+', full_content))
+        read_time = f"{max(8, word_count // 150)} min čtení"
+
+        article_data = {
+            "title": meta.get("title", topic),
+            "excerpt": meta.get("excerpt", ""),
+            "content": full_content,
+            "category": meta.get("category", "Nábor"),
+            "readTime": read_time,
+            "wordCount": word_count
+        }
         
+        print(f"Článek dokončen. Počet slov: {word_count}")
         return article_data
 
     def generate_image(self, title):
-        print(f"Generuji obrazek pro: {title}...")
-        prompt = f"Professional high-quality business photography for an HR blog post titled '{title}'. Modern office setting, diverse people, warm lighting, premium aesthetic, 4k."
+        print(f"Generuji obrázek pro: {title}...")
+        prompt = f"Professional high-quality business/HR photography, modern office environment, focus on human interaction or modern technology, clean aesthetic, complementary to the topic: {title}. Realistic, premium feel."
         
         response = self.client.images.generate(
             model="dall-e-3",
@@ -89,93 +127,62 @@ class BlogRobot:
             quality="standard",
             n=1
         )
-        
-        image_url = response.data[0].url
-        return image_url
+        return response.data[0].url
 
-    def download_image(self, image_url, article_id):
-        if not IMAGES_DIR.exists():
-            IMAGES_DIR.mkdir(parents=True)
-            
-        filename = f"{article_id}.png"
-        filepath = IMAGES_DIR / filename
+    def slugify(self, text):
+        text = text.lower()
+        text = re.sub(r'[áčďéěíňóřšťúůýž]', lambda m: {
+            'á':'a','č':'c','ď':'d','é':'e','ě':'e','í':'i','ň':'n','ó':'o','ř':'r','š':'s','ť':'t','ú':'u','ů':'u','ý':'y','ž':'z'
+        }[m.group()], text)
+        text = re.sub(r'[^a-z0-9]+', '-', text)
+        return text.strip('-')
+
+    def run(self):
+        article = self.generate_article()
         
-        print(f"Stahuji obrazek do {filepath}...")
+        # Check word count - retry if too low
+        if article['wordCount'] < 900:
+            print("VAROVÁNÍ: Článek je příliš krátký. Zkouším vygenerovat ještě jednou...")
+            return self.run()
+
+        image_url = self.generate_image(article['title'])
+        
+        slug = self.slugify(article['title'])
+        image_path = f"{BLOG_IMAGE_DIR}{slug}.png"
+        
+        print(f"Stahuji obrázek do {image_path}...")
         img_data = requests.get(image_url).content
-        with open(filepath, 'wb') as handler:
+        with open(image_path, 'wb') as handler:
             handler.write(img_data)
-            
-        return f"/blog/{filename}"
 
-    def update_articles_ts(self, new_article):
+        # Update articles.ts
         print(f"Aktualizuji {ARTICLES_FILE}...")
         with open(ARTICLES_FILE, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        # Find the articles array
-        match = re.search(r'export const articles: Article\[\] = \[(.*?)\];', content, re.DOTALL)
-        if not match:
-            print("❌ Chyba: Nepodařilo se najít pole 'articles' v souboru.")
-            return
+        new_entry = {
+            "id": slug,
+            "title": article['title'],
+            "excerpt": article['excerpt'],
+            "date": datetime.datetime.now().strftime("%d. dubna %Y").lstrip("0"),
+            "readTime": article['readTime'],
+            "category": article['category'],
+            "image": f"/blog/{slug}.png",
+            "content": article['content'].replace("`", "'")
+        }
 
-        existing_articles_str = match.group(1).strip()
+        json_entry = json.dumps(new_entry, indent=2, ensure_ascii=False)
+        # Add indentation
+        json_entry = "\n  " + json_entry.replace("\n", "\n  ") + ","
         
-        # Prepare the new article string (indented)
-        new_article_str = f"""  {{
-    id: "{new_article['id']}",
-    title: "{new_article['title']}",
-    excerpt: "{new_article['excerpt']}",
-    date: "{new_article['date']}",
-    readTime: "{new_article['readTime']}",
-    category: "{new_article['category']}",
-    image: "{new_article['image']}",
-    content: `{new_article['content']}`
-  }},"""
-
-        # Update the file content
-        new_content = content.replace(
-            f"export const articles: Article[] = [",
-            f"export const articles: Article[] = [\n{new_article_str}"
-        )
-
+        # Insert at the beginning of the array
+        new_content = content.replace("export const articles: Article[] = [", f"export const articles: Article[] = [{json_entry}")
+        
         with open(ARTICLES_FILE, 'w', encoding='utf-8') as f:
             f.write(new_content)
-        
+
         print("✅ Hotovo! Článek byl přidán.")
 
-    def _get_czech_date(self):
-        now = datetime.datetime.now()
-        months = ["ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince"]
-        return f"{now.day}. {months[now.month-1]} {now.year}"
-
-    def _generate_id(self, title):
-        # Basic slugify
-        slug = title.lower().replace(" ", "-")
-        slug = re.sub(r'[^a-z0-9-]', '', slug)
-        return slug
-
-def main():
-    if not OPENAI_API_KEY:
-        print("Chyba: Chybí API klíč v .env souboru (OPENAI_API_KEY).")
-        return
-
-    robot = BlogRobot(OPENAI_API_KEY)
-    
-    try:
-        # 1. Generate Content
-        article = robot.generate_article()
-        
-        # 2. Generate Image
-        img_url = robot.generate_image(article['title'])
-        
-        # 3. Save Image
-        article['image'] = robot.download_image(img_url, article['id'])
-        
-        # 4. Update Website Data
-        robot.update_articles_ts(article)
-        
-    except Exception as e:
-        print(f"Doslo k chybe: {e}")
-
 if __name__ == "__main__":
-    main()
+    robot = BlogRobot()
+    robot.run()
