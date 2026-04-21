@@ -37,10 +37,51 @@ class BlogRobot:
             raise ValueError("OPENAI_API_KEY nebyl nalezen v .env souboru!")
         self.client = OpenAI(api_key=OPENAI_API_KEY)
 
+    def get_existing_topics(self):
+        if not os.path.exists(ARTICLES_FILE):
+            return []
+        
+        try:
+            with open(ARTICLES_FILE, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Simple regex to find titles in the TS file
+            titles = re.findall(r'"title":\s*"([^"]+)"', content)
+            return list(set(titles))
+        except Exception as e:
+            print(f"Chyba při čtení existujících témat: {e}")
+            return []
+
     def generate_article(self):
-        # Pick topic based on day
-        topic = HR_TOPICS[datetime.datetime.now().day % len(HR_TOPICS)]
-        print(f"Generuji článek na téma: {topic}")
+        # Extract existing topics to avoid repetition
+        existing_topics = self.get_existing_topics()
+        print(f"Nalezeno {len(existing_topics)} existujících článků.")
+
+        # Ask AI for a new, unique topic
+        topic_prompt = f"""
+        Jsi špičkový HR trend-setter a editor blogu. 
+        Tvým úkolem je vymyslet JEDNO nové, vysoce zajímavé a aktuální téma pro HR blog v roce 2026.
+        
+        Už jsme napsali články na tato témata: {existing_topics}
+        
+        Pravidla:
+        1. Téma MUSÍ být odlišné od těch, co už máme.
+        2. Musí to být "hot topic" moderní personalistiky (AI, hybridní práce, psychologie, automatizace, nová legislativa, netradiční nábor atd.).
+        3. Téma musí být v češtině.
+        4. Musí z něj jít napsat článek o 1000+ slovech.
+        
+        Zvol to nejzajímavější téma, které v seznamu chybí.
+        Vrať pouze JSON s klíčem 'topic'.
+        """
+        
+        topic_res = self.client.chat.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "system", "content": "Jsi expert na budoucnost práce a HR trendy."},
+                      {"role": "user", "content": topic_prompt}],
+            response_format={"type": "json_object"}
+        )
+        topic = json.loads(topic_res.choices[0].message.content).get('topic')
+        print(f"AI vybralo nové téma: {topic}")
 
         # STEP 1: Generate Detailed Outline
         outline_prompt = f"""
