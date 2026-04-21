@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Facebook } from "lucide-react";
 const logo = "/logo.png";
 
 const Logo = ({ className = "w-10 h-10" }: { className?: string }) => (
@@ -45,6 +46,17 @@ export default function Footer() {
                 <li>
                   <a href="mailto:obchod@teamoctopus.cz" className="hover:text-octopus-navy transition-colors text-octopus-gold/70 hover:text-octopus-gold">
                     obchod@teamoctopus.cz
+                  </a>
+                </li>
+                <li className="pt-2">
+                  <a 
+                    href="https://www.facebook.com/teamoctopuscz" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-2 hover:text-octopus-navy transition-colors text-octopus-gold/70 hover:text-octopus-gold"
+                  >
+                    <Facebook className="w-5 h-5" />
+                    <span>Facebook</span>
                   </a>
                 </li>
               </ul>

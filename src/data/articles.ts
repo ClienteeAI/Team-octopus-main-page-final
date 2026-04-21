@@ -11,6 +11,71 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    id: "efektivn-onboarding-prvnch-90-dn-kter-ovlivn-celou-kariru",
+    title: "Efektivní Onboarding: Prvních 90 dní, které ovlivní celou kariéru",
+    excerpt: "Onboarding je klíčová fáze, která může ovlivnit úspěch zaměstnance na novém místě. Efektivně nastavený proces může pomoci rychlejší adaptaci i vyšší dlouhodobé spokojenosti. Podívejte se s námi na osvědčené postupy a důležité aspekty této kritické fáze integrace nových pracovníků.",
+    date: "21. dubna 2026",
+    readTime: "8 min čtení",
+    category: "Nábor",
+    image: "/blog/efektivn-onboarding-prvnch-90-dn-kter-ovlivn-celou-kariru.png",
+    content: `<h2>Efektivní Onboarding: Prvních 90 dní, které ovlivní celou kariéru</h2>
+<p>Onboarding, neboli proces uvedení nového zaměstnance do společnosti, je kritickou fází a klíčovým momentem pro úspěšnou adaptaci. Zatímco první den v nové práci může být stresující, dobře nastavený onboarding může významně přispět ke snížení nejistoty a zvýšení angažovanosti. Zavedení systematického přístupu k onboardingu může pomoci nové zaměstnance nejen začlenit do kolektivu, ale i nastavit správný rytmus jejich pracovního nasazení.</p>
+
+<h3>Co je dobrý onboarding?</h3>
+<p>Onboarding je mnohem více než jen seznámení se s novými kolegy a pracovním prostředím. Dobrý onboarding se zaměřuje na integraci zaměstnance do firemní kultury, pochopení hodnot a strategií společnosti a osvojení si nových dovedností nutných pro úspěch v dané roli. Mezi důležité aspekty dobrého onboardingu patří:</p>
+<ul>
+  <li><strong>Jasná komunikace:</strong> Ujistěte se, že nový zaměstnanec má všechny potřebné informace a zdroje, které mu pomohou cítit se komfortně a kompetentně na nové pozici.</li>
+  <li><strong>Mentoring:</strong> Přidělení mentora nebo buddyho, který může poskytnout podporu a odpovědi na otázky v průběhu prvních týdnů.</li>
+  <li><strong>Stanovení očekávání:</strong> Jasně definujte cíle a očekávání spojené s novou pozicí, což pomůže zaměstnanci lépe pochopit, co se od něj očekává.</li>
+</ul>
+
+<h3>Důležitost prvních 90 dní</h3>
+<p>Prvních 90 dní v nové roli je zásadních pro určení, zda se nový zaměstnanec stane úspěšným a dlouhodobým členem organizace. V těchto třech měsících dochází k přirozenému vyhraňování vztahů a hodnocení, jak dobře zaměstnanec zapadá do firemní kultury:</p>
+<ul>
+  <li><strong>Budování vztahů:</strong> Podporujte nové zaměstnance v navazování kontaktů napříč odděleními, což podpoří jejich lepší orientaci a integraci.</li>
+  <li><strong>Pochopení pracovního procesu:</strong> Ujistěte se, že nový zaměstnanec rozumí klíčovým procesům a nástrojům, které budou k jeho práci potřeba.</li>
+  <li><strong>Pravidelná zpětná vazba:</strong> Poskytování průběžné zpětné vazby pomůže identifikovat možné oblasti pro zlepšení a zvýší celkovou angažovanost.</li>
+</ul>
+
+<h3>Časté chyby a jak se jim vyhnout</h3>
+<p>V procesu onboardingu se často stává, že společnosti přehlížejí některé klíčové kroky, což může vést k tomu, že se noví zaměstnanci necítí plnohodnotnou součástí týmu. Mezi nejčastější chyby patří:</p>
+<ul>
+  <li><strong>Přetížení informacemi:</strong> Překonávání začátečníků přehnaným množstvím informací může vést k jejich ztracenosti a zmatení. Doporučením je dávkovat informace postupně.</li>
+  <li><strong>Nedostatečné zapojení do týmu:</strong> Noví zaměstnanci by měli být aktivně zapojováni do týmových aktivit a projektů, aby se cítili součástí kolektivu.</li>
+  <li><strong>Slabá zpětná vazba:</strong> Absence pravidelné zpětné vazby může způsobit, že se nový zaměstnanec cítí nejistě ohledně svého pokroku a přínosu.</li>
+</ul>
+
+<h3>Osvědčené postupy pro úspěšný onboarding</h3>
+<p>Existuje několik osvědčených postupů, které mohou zásadně zlepšit efektivitu onboardingu a zvýšit pravděpodobnost úspěchu u nových zaměstnanců. Mezi tyto postupy patří:</p>
+<ul>
+  <li><strong>Speciální uvítací balíčky:</strong> Připravte personalizované uvítací balíčky pro nové zaměstnance, které mohou zahrnovat firemní vybavení, informační materiály nebo drobné dárky.</li>
+  <li><strong>Interaktivní školení:</strong> Využívejte interaktivní školení a workshopy, které novým lidem umožní aktivní zapojení a snazší osvojení nových znalostí.</li>
+  <li><strong>Přehledný onboardingový plán:</strong> Vytvořte plán, který jasně definuje kroky a milníky pro prvních 90 dní, což strukturuje proces integrace.</li>
+</ul>
+
+<h3>Závěr</h3>
+<p>Onboarding je více než jen administrativní proces – je zásadním krokem k budování silné a efektivní pracovní síly. Skvělý onboardingový program dokáže nejen zvýšit spokojenost a produktivitu nového zaměstnance, ale i pozitivně ovlivnit retenci talentů. Zaměřte se na důslednou komunikaci, logickou strukturu a přátelské uvedení nováčků do pracovního týmu, a budete sklízet nejen skvělou pracovní atmosféru, ale i dlouhodobé úspěchy.</p>`
+  },
+  {
+    id: "onboarding-prvnch-90-dn-novho-zamstnance",
+    title: "Onboarding: Prvních 90 dní nového zaměstnance",
+    excerpt: "Efektivní onboarding je klíčem k úspěšné integraci nového zaměstnance. Prvních 90 dní rozhoduje o tom, jak rychle a efektivně se noví zaměstnanci začlení do týmu a firmy.",
+    date: "21. dubna 2026",
+    readTime: "5 min čtení",
+    category: "Nábor",
+    image: "/blog/onboarding-prvnch-90-dn-novho-zamstnance.png",
+    content: `<h2>Onboarding: Prvních 90 dní nového zaměstnance</h2>
+<p>Úspěšné uvedení nového zaměstnance do firmy, známé také jako onboarding, je nezbytným krokem k zajištění jeho integrace a pozdější výkonnosti. Dobře strukturovaný onboarding program zajišťuje, že nový člen týmu získává potřebné znalosti a dovednosti k efektivnímu plnění svých povinností.</p>
+<h3>Proč je onboarding důležitý?</h3>
+<p>Onboarding není jen o předání pracovní smlouvy a úvodním školení. Během prvních 90 dní by měl zaměstnanec obdržet jakoteoretické, tak praktické informace, které mu pomohou plnění jeho role a adaptaci na firemní kulturu. Správný onboarding snižuje fluktuaci, zvyšuje produktivitu a posiluje loajalitu zaměstnanců.</p>
+<h3>Klíčové fáze onboardingu</h3>
+<p>První fáze začíná ještě před nástupem. Zasláním uvítacího balíčku a důležitých informací předem se nováček cítí hned od začátku součástí týmu. Těsně po nástupu následuje fáze integrace, kde se noví kolegové seznamují s týmem, hodnotami firmy a své úkoly. Poslední fáze je evaluace a poskytování zpětné vazby, která umožní oboustrannou reflexi pokroku.</p>
+<h3>Krok za krokem: Jak na úspěšný onboarding</h3>
+<p>Naplánujte proces: Mějte připravený strukturovaný plán, který pokrývá všechny důležité aspekty adaptace zaměstnance. Průběžně kontrolujte: Pravidelně se setkávejte s novým zaměstnancem, abyste zjistili, jak si vede a zda nepotřebuje další podporu. Vzdělávejte: Zapojte svého nováčka do všech relevantních školení a umožněte mu seznámení s firemními systémy a postupy. Motivujte: Oceňujte jakékoliv drobné úspěchy, které nový zaměstnanec dosáhne. Tím se posiluje motivace a chuť k dalšímu učení a růstu.</p>
+<h3>Závěr</h3>
+<p>Onboarding je klíčovým procesem, který vyžaduje detailní plánování a aktivní zapojení. Firmy, které kladou důraz na kvalitní onboarding, dosahují lepších výsledků v oblasti spokojenosti i produktivity zaměstnanců. Investice do prvních 90 dní kariéry zaměstnance se vždy vyplatí!</p>`
+  },
+  {
     id: "ai-v-hr",
     title: "Budoucnost náboru: Role AI v moderním HR",
     excerpt: "Umělá inteligence už není jen sci-fi. V náboru zaměstnanců se stává klíčovým nástrojem pro zrychlení procesu a zvýšení kvality výběru.",
