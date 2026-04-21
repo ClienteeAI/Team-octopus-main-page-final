@@ -160,6 +160,17 @@ class BlogRobot:
         with open(ARTICLES_FILE, 'r', encoding='utf-8') as f:
             content = f.read()
 
+        # Clean content from markdown fences if any
+        clean_content = article['content'].strip()
+        if clean_content.startswith("```html"):
+            clean_content = clean_content[7:]
+        if clean_content.endswith("```"):
+            clean_content = clean_content[:-3]
+        clean_content = clean_content.strip()
+
+        # Final string replacements for TS safety
+        clean_content = clean_content.replace("`", "'").replace("${", "\\${")
+
         new_entry = {
             "id": slug,
             "title": article['title'],
@@ -168,7 +179,7 @@ class BlogRobot:
             "readTime": article['readTime'],
             "category": article['category'],
             "image": f"/blog/{slug}.png",
-            "content": article['content'].replace("`", "'")
+            "content": clean_content
         }
 
         json_entry = json.dumps(new_entry, indent=2, ensure_ascii=False)
