@@ -131,7 +131,11 @@ class BlogRobot:
                 messages=[{"role": "system", "content": "Jsi nejlepší český HR blogger. Píšeš odborně a do hloubky."},
                           {"role": "user", "content": content_prompt}]
             )
-            full_content += sect_res.choices[0].message.content + "\n\n"
+            # Clean content from potential markdown markers
+            raw_content = sect_res.choices[0].message.content
+            # Strip backticks and triple quotes
+            clean_content = re.sub(r'^```html\n|```html|```|^\'\'\'html\n|\'\'\'html|\'\'\'', '', raw_content, flags=re.MULTILINE).strip()
+            full_content += clean_content + "\n\n"
 
         # STEP 3: Generate Title, Excerpt and Meta
         meta_prompt = f"Na základě tohoto obsahu vytvoř JSON s klíči 'title', 'excerpt' (3 věty) a 'category'.\n\nObsah:\n{full_content[:1000]}"
