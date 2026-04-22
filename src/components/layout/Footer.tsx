@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook } from "lucide-react";
-const logo = "/octopus-logo.jpeg";
+const logo = "/octopus-logo.png";
 
 const Logo = ({ className = "w-10 h-10" }: { className?: string }) => (
   <div className={`relative flex items-center justify-center overflow-hidden rounded-xl ${className}`}>
