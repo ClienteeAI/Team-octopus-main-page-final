@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Menu, X } from "lucide-react";
-const logo = "/logo.png";
+const logo = "/octopus-logo.jpeg";
 
 const Logo = ({ className = "w-10 h-10" }: { className?: string }) => (
   <div className={`relative flex items-center justify-center overflow-hidden rounded-xl ${className}`}>

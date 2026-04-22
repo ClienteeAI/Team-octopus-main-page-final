@@ -4,6 +4,7 @@ import json
 import requests
 import re
 import sys
+import subprocess
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -238,6 +239,17 @@ class BlogRobot:
             f.write(new_content)
 
         print("✅ Hotovo! Článek byl přidán.")
+
+        # STEP 5: Add, Commit and Push to Git
+        print("\n🚀 Pushing to Git...")
+        try:
+            subprocess.run(["git", "add", "."], check=True)
+            commit_msg = f"Automated blog post: {article['title']}"
+            subprocess.run(["git", "commit", "-m", commit_msg], check=True)
+            subprocess.run(["git", "push"], check=True)
+            print("✅ Successfully pushed to repository!")
+        except subprocess.CalledProcessError as e:
+            print(f"❌ Git operation failed: {e}")
 
 if __name__ == "__main__":
     robot = BlogRobot()

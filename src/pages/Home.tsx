@@ -20,7 +20,7 @@ import Testimonials from "../components/sections/Testimonials";
 import Newsletter from "../components/sections/Newsletter";
 import ExperienceSection from "../components/sections/Experience";
 import ContactModal from "../components/modals/ContactModal";
-const logoImg = "/logo.png";
+const logoImg = "/octopus-logo.jpeg";
 const infographicImg = "/hr_process_infographic.jpg";
 
 const Logo = ({ className = "w-10 h-10" }: { className?: string; light?: boolean }) => (
