@@ -19,7 +19,7 @@ export default function Navbar({ onAuditClick }: { onAuditClick?: () => void }) 
     { label: 'AI audit', path: '#audit', onClick: onAuditClick },
     { label: 'O nás', path: '/o-nas' },
     { label: 'Blog', path: '/blog' },
-    { label: 'Video', path: '/videos' }
+    { label: 'Kontakt', path: '/#kontakt' }
   ];
 
   return (

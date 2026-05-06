@@ -10,7 +10,7 @@ const Logo = ({ className = "w-10 h-10" }: { className?: string }) => (
 
 export default function Footer() {
   return (
-    <footer className="bg-octopus-cream py-40 border-t border-octopus-navy/5 relative overflow-hidden">
+    <footer id="kontakt" className="bg-octopus-cream py-40 border-t border-octopus-navy/5 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start gap-24 mb-32">
           <div className="max-w-md">
@@ -33,7 +33,7 @@ export default function Footer() {
                 <li><Link to="/#prinosy" className="hover:text-octopus-navy transition-colors">Přínosy</Link></li>
                 <li><Link to="/o-nas" className="hover:text-octopus-navy transition-colors">O nás</Link></li>
                 <li><Link to="/blog" className="hover:text-octopus-navy transition-colors">Blog</Link></li>
-                <li><Link to="/videos" className="hover:text-octopus-navy transition-colors">Video</Link></li>
+                <li><a href="/#kontakt" className="hover:text-octopus-navy transition-colors">Kontakt</a></li>
               </ul>
             </div>
             <div>
