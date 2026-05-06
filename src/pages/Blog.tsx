@@ -3,7 +3,25 @@ import { Link } from "react-router-dom";
 import { articles } from "../data/articles";
 import { ArrowLeft, Clock, Tag, ChevronRight } from "lucide-react";
 
+const czechMonths: Record<string, number> = {
+  "ledna": 0, "února": 1, "března": 2, "dubna": 3, "května": 4, "června": 5,
+  "července": 6, "srpna": 7, "září": 8, "října": 9, "listopadu": 10, "prosince": 11
+};
+
+const parseDate = (dateStr: string) => {
+  const parts = dateStr.split(" ");
+  if (parts.length >= 3) {
+    const day = parseInt(parts[0]);
+    const month = czechMonths[parts[1]] || 0;
+    const year = parseInt(parts[2]);
+    return new Date(year, month, day).getTime();
+  }
+  return 0;
+};
+
 export default function Blog() {
+  const sortedArticles = [...articles].sort((a, b) => parseDate(b.date) - parseDate(a.date));
+
   return (
     <div className="pt-56 pb-40 px-6 max-w-7xl mx-auto">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-3xl mb-32">
@@ -17,7 +35,7 @@ export default function Blog() {
       </motion.div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
-        {articles.map((article, i) => (
+        {sortedArticles.map((article, i) => (
           <motion.div key={article.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: i * 0.1 }}>
             <Link to={`/blog/${article.id}`} className="group block h-full">
               <div className="relative aspect-[16/10] rounded-[40px] overflow-hidden mb-10 shadow-2xl shadow-octopus-navy/5 border border-octopus-navy/5">
