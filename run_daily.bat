@@ -29,6 +29,5 @@ python scripts/blog_robot.py
 
 echo.
 echo ==========================================
-echo   Hotovo! Zmacknete libovolnou klavesu.
+echo   Hotovo!
 echo ==========================================
-pause

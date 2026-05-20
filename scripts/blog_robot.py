@@ -5,6 +5,7 @@ import requests
 import re
 import sys
 import subprocess
+import shutil
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -52,6 +53,11 @@ class BlogRobot:
         except Exception as e:
             print(f"Chyba při čtení existujících témat: {e}")
             return []
+
+    def get_czech_date(self):
+        now = datetime.datetime.now()
+        months = ["ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince"]
+        return f"{now.day}. {months[now.month-1]} {now.year}"
 
     def generate_article(self):
         # Extract existing topics to avoid repetition
@@ -166,14 +172,29 @@ class BlogRobot:
         print(f"Generuji obrázek pro: {title}...")
         prompt = f"Professional high-quality business/HR photography, modern office environment, focus on human interaction or modern technology, clean aesthetic, complementary to the topic: {title}. Realistic, premium feel."
         
-        response = self.client.images.generate(
-            model="dall-e-3",
-            prompt=prompt,
-            size="1024x1024",
-            quality="standard",
-            n=1
-        )
-        return response.data[0].url
+        try:
+            response = self.client.images.generate(
+                model="dall-e-3",
+                prompt=prompt,
+                size="1024x1024",
+                quality="standard",
+                n=1
+            )
+            return response.data[0].url
+        except Exception as e:
+            print(f"Varování: Generování obrázku pomocí DALL-E-3 selhalo: {e}")
+            print("Zkouším DALL-E-2...")
+            try:
+                response = self.client.images.generate(
+                    model="dall-e-2",
+                    prompt=prompt,
+                    size="1024x1024",
+                    n=1
+                )
+                return response.data[0].url
+            except Exception as e2:
+                print(f"Varování: Generování obrázku pomocí DALL-E-2 také selhalo: {e2}")
+                return None
 
     def slugify(self, text):
         text = text.lower()
@@ -196,10 +217,26 @@ class BlogRobot:
         slug = self.slugify(article['title'])
         image_path = f"{BLOG_IMAGE_DIR}{slug}.png"
         
-        print(f"Stahuji obrázek do {image_path}...")
-        img_data = requests.get(image_url).content
-        with open(image_path, 'wb') as handler:
-            handler.write(img_data)
+        if image_url:
+            print(f"Stahuji obrázek do {image_path}...")
+            img_data = requests.get(image_url).content
+            with open(image_path, 'wb') as handler:
+                handler.write(img_data)
+        else:
+            print("Používám náhradní obrázek z předpřipravených...")
+            fallback_options = [
+                "public/hr_ai_recruitment.png",
+                "public/hr_hero_professional.png",
+                "public/hr_hybrid_culture.png",
+                "public/hr_team_success.png",
+                "public/hr_wellbeing.png"
+            ]
+            fallback_img = fallback_options[len(slug) % len(fallback_options)]
+            if os.path.exists(fallback_img):
+                shutil.copy(fallback_img, image_path)
+                print(f"Zkopírován náhradní obrázek {fallback_img} do {image_path}")
+            else:
+                print(f"Varování: Náhradní obrázek {fallback_img} neexistuje!")
 
         # Update articles.ts
         print(f"Aktualizuji {ARTICLES_FILE}...")
@@ -221,7 +258,7 @@ class BlogRobot:
             "id": slug,
             "title": article['title'],
             "excerpt": article['excerpt'],
-            "date": datetime.datetime.now().strftime("%d. dubna %Y").lstrip("0"),
+            "date": self.get_czech_date(),
             "readTime": article['readTime'],
             "category": article['category'],
             "image": f"/blog/{slug}.png",
