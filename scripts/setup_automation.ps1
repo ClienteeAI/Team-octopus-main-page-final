@@ -40,4 +40,4 @@ Write-Host "Robot se nyní spustí každý den v 9:00 ráno."
 Write-Host "Pokud bude v tu dobu počítač vypnutý, robot se spustí hned po zapnutí."
 Write-Host ""
 Write-Host "Můžete zavřít toto okno."
-pause
+
