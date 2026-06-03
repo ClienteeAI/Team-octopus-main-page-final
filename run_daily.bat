@@ -21,7 +21,7 @@ if not exist .env (
 
 :: Install requirements
 echo [1/2] Instaluji potrebne knihovny...
-pip install -r scripts/requirements.txt --quiet
+pip install -r scripts/requirements.txt --user --quiet
 
 :: Run the script
 echo [2/2] Spoustim Blog Robota...

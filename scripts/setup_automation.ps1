@@ -23,12 +23,15 @@ $Settings = New-ScheduledTaskSettingsSet `
     -DontStopIfGoingOnBatteries `
     -Compatibility Win8
 
+$Principal = New-ScheduledTaskPrincipal -UserId $env:USERNAME -LogonType Interactive -RunLevel Highest
+
 # --- REGISTER THE TASK ---
 Register-ScheduledTask `
     -TaskName $TaskName `
     -Action $Action `
     -Trigger $Trigger `
     -Settings $Settings `
+    -Principal $Principal `
     -Description "Automaticky generuje HR blog články pro Octopus každý den v 9:00 ráno." `
     -Force
 
