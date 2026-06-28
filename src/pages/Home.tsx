@@ -25,6 +25,8 @@ import Testimonials from "../components/sections/Testimonials";
 import Newsletter from "../components/sections/Newsletter";
 import ExperienceSection from "../components/sections/Experience";
 import ContactModal from "../components/modals/ContactModal";
+import CheckoutModal from "../components/checkout/CheckoutModal";
+import { PACKAGES, type CheckoutPackage } from "../data/packages";
 const logoImg = "/octopus-logo.png";
 const infographicImg = "/hr_process_infographic.jpg";
 
@@ -43,16 +45,10 @@ export default function Home() {
     setIsModalOpen(true);
   };
 
-  const openPaymentPopup = (url: string) => {
-    const width = 600;
-    const height = 800;
-    const left = window.screen.width / 2 - width / 2;
-    const top = window.screen.height / 2 - height / 2;
-    window.open(
-      url,
-      "PaymentGateway",
-      `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
-    );
+  const [checkoutPkg, setCheckoutPkg] = useState<CheckoutPackage | null>(null);
+
+  const openCheckout = (id: CheckoutPackage["id"]) => {
+    setCheckoutPkg(PACKAGES[id]);
   };
 
   return (
@@ -334,7 +330,7 @@ export default function Home() {
               </div>
 
               <button 
-                onClick={() => openPaymentPopup("https://link.fastpaydirect.com/payment-link/6a1d34b303b17c94f5713dc2")}
+                onClick={() => openCheckout("start")}
                 className="w-full py-4 text-center rounded-2xl text-xs font-bold uppercase tracking-[0.2em] border border-teal-600/50 text-teal-700 hover:bg-teal-600 hover:text-white transition-all active:scale-[0.98] cursor-pointer"
               >
                 Vybrat balíček
@@ -387,7 +383,7 @@ export default function Home() {
               </div>
 
               <button 
-                onClick={() => openPaymentPopup("https://link.fastpaydirect.com/payment-link/6a1d350003b17c94f5713dc3")}
+                onClick={() => openCheckout("business")}
                 className="w-full py-4.5 text-center bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl text-xs font-bold uppercase tracking-[0.2em] transition-all shadow-md shadow-indigo-600/10 active:scale-[0.98] cursor-pointer"
               >
                 Vybrat balíček
@@ -435,7 +431,7 @@ export default function Home() {
               </div>
 
               <button 
-                onClick={() => openPaymentPopup("https://link.fastpaydirect.com/payment-link/6a1d35185a9093aac76c5571")}
+                onClick={() => openCheckout("performance")}
                 className="w-full py-4 text-center rounded-2xl text-xs font-bold uppercase tracking-[0.2em] border border-amber-600/50 text-amber-700 hover:bg-amber-600 hover:text-white transition-all active:scale-[0.98] cursor-pointer"
               >
                 Vybrat balíček
@@ -479,10 +475,17 @@ export default function Home() {
       <Newsletter />
       
       {/* Contact Modal */}
-      <ContactModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <ContactModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         context={modalContext}
+      />
+
+      {/* Checkout Modal (nákupní flow: formulář -> souhrn -> platba) */}
+      <CheckoutModal
+        isOpen={checkoutPkg !== null}
+        onClose={() => setCheckoutPkg(null)}
+        pkg={checkoutPkg}
       />
     </div>
   );

@@ -39,3 +39,50 @@ export const submitToWebhook = async (url: string, data: any) => {
 
   return response.json();
 };
+
+// Odeslání do CRM webhooku v rámci nákupního flow.
+// Když URL není nastavená (viz config/integrations.ts), request se přeskočí a jen zaloguje,
+// aby šlo UX otestovat ještě před dodáním reálných webhooků.
+export const submitToCrm = async (url: string, data: any) => {
+  if (!url) {
+    console.warn("[checkout] CRM webhook URL není nastavená – odeslání přeskočeno.", data);
+    return { skipped: true };
+  }
+
+  const body = JSON.stringify({
+    ...data,
+    timestamp: new Date().toISOString(),
+    source: "main-web",
+  });
+
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+    });
+  } catch (networkErr) {
+    // Síťová/CORS chyba (LeadConnector webhook často nevrací CORS hlavičky pro čtení odpovědi).
+    // Fire-and-forget fallback: request projde, jen nepřečteme odpověď.
+    console.warn("[checkout] přímý fetch selhal, zkouším no-cors fallback.", networkErr);
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain" },
+      body,
+    });
+    return { ok: true, opaque: true };
+  }
+
+  if (!response.ok) {
+    throw new Error("CRM webhook failed: " + response.status);
+  }
+
+  // CRM webhook může vrátit prázdné tělo.
+  try {
+    return await response.json();
+  } catch {
+    return { ok: true };
+  }
+};
