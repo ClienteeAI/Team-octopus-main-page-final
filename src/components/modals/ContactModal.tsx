@@ -100,7 +100,7 @@ export default function ContactModal({ isOpen, onClose, context }: ContactModalP
               ) : (
                 <>
                   <div className="mb-12">
-                    <h2 className="text-4xl font-bold text-octopus-navy mb-4 tracking-tight">Mám zájem o MaxTeam HR</h2>
+                    <h2 className="text-4xl font-bold text-octopus-navy mb-4 tracking-tight">Mám zájem o Octopus HR</h2>
                     <p className="text-octopus-navy/50 font-medium">Vyplňte prosím krátký formulář a naši experti se s vámi spojí.</p>
                     {context && (
                       <div className="inline-block mt-4 px-4 py-1.5 rounded-full bg-octopus-gold/10 text-octopus-gold text-[10px] font-bold uppercase tracking-widest border border-octopus-gold/20">

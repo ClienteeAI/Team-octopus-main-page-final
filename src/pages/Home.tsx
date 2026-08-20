@@ -59,21 +59,21 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1, ease: "easeOut" }}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-octopus-gold/10 text-octopus-gold text-[10px] font-bold uppercase tracking-[0.25em] mb-10 border border-octopus-gold/20 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-octopus-gold animate-pulse" />
-              AI Řešení MaxTeam HR
+              AI Řešení Octopus HR
             </div>
             <h1 className="text-7xl sm:text-[100px] font-bold leading-[0.82] tracking-tighter mb-12 text-octopus-navy">
               Váš AI parťák <br />
               <span className="text-octopus-gold italic font-serif font-normal text-8xl sm:text-[120px]">pro nábor</span>
             </h1>
             <p className="text-xl text-octopus-navy/70 max-w-lg mb-14 leading-relaxed font-medium">
-              MaxTeam HR je jediné řešení svého druhu. Pomáháme firmám s HR oddělením i bez něj najít, vybrat a onboardovat ty nejlepší kandidáty s nevídanou přesností a rychlostí.
+              Octopus HR je jediné řešení svého druhu. Pomáháme firmám s HR oddělením i bez něj najít, vybrat a onboardovat ty nejlepší kandidáty s nevídanou přesností a rychlostí.
             </p>
             <div className="flex flex-wrap gap-8">
               <button 
-                onClick={() => openModal("Vyzkoušet MaxTeam HR (Hero)")}
+                onClick={() => openModal("Vyzkoušet Octopus HR (Hero)")}
                 className="bg-octopus-navy text-white px-12 py-6 rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:bg-octopus-gold hover:text-octopus-navy transition-all shadow-[0_20px_50px_-10px_rgba(15,23,42,0.3)] flex items-center gap-4 group active:scale-95"
               >
-                Vyzkoušet MaxTeam HR
+                Vyzkoušet Octopus HR
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
               </button>
             </div>
@@ -81,15 +81,15 @@ export default function Home() {
 
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.2, ease: "easeOut" }} className="relative">
             <div className="aspect-[4/5] bg-octopus-navy rounded-[60px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(15,23,42,0.4)] relative group">
-              <img src="/hr_hero_professional.png" alt="MaxTeam HR Dashboard" className="object-cover w-full h-full opacity-60 group-hover:scale-105 transition-transform duration-[2s]" referrerPolicy="no-referrer" />
+              <img src="/hr_hero_professional.png" alt="Octopus HR Dashboard" className="object-cover w-full h-full opacity-60 group-hover:scale-105 transition-transform duration-[2s]" referrerPolicy="no-referrer" />
               <div className="absolute inset-0 bg-octopus-navy/10" />
               <div className="absolute bottom-12 left-12 right-12">
                 <div className="flex items-center gap-8 p-10 bg-white/5 backdrop-blur-3xl rounded-[40px] border border-white/10 shadow-2xl">
                   <div className="w-20 h-20 rounded-3xl bg-octopus-gold flex items-center justify-center shadow-xl transform -rotate-3 group-hover:rotate-0 transition-transform duration-700 overflow-hidden border-2 border-octopus-navy">
-                    <img src={logoImg} alt="MaxTeam HR Logo" className="w-full h-full object-cover scale-110" />
+                    <img src={logoImg} alt="Octopus HR Logo" className="w-full h-full object-cover scale-110" />
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-3xl tracking-tight mb-1">MaxTeam HR</h3>
+                    <h3 className="text-white font-bold text-3xl tracking-tight mb-1">Octopus HR</h3>
                     <p className="text-white/50 text-sm font-medium tracking-wide uppercase">Vaše inteligentní výhoda</p>
                   </div>
                 </div>
@@ -118,7 +118,7 @@ export default function Home() {
               </div>
               <h4 className="text-4xl font-bold mb-8 tracking-tight text-octopus-navy">Budeme pravou rukou vašeho HR</h4>
               <p className="text-lg text-octopus-navy/50 font-medium leading-relaxed mb-12">
-                Oprostěte své personalisty od rutinní administrativy. MaxTeam HR šetří až 70 % času při screeningu životopisů a umožňuje HR týmu soustředit se na budování vztahů a firemní kultury.
+                Oprostěte své personalisty od rutinní administrativy. Octopus HR šetří až 70 % času při screeningu životopisů a umožňuje HR týmu soustředit se na budování vztahů a firemní kultury.
               </p>
               <div 
                 onClick={() => openModal("Zefektivnění stávajícího HR")}
@@ -137,7 +137,7 @@ export default function Home() {
               </div>
               <h4 className="text-4xl font-bold mb-8 tracking-tight">Nahradíme celé HR oddělení</h4>
               <p className="text-lg text-white/50 font-medium leading-relaxed mb-12">
-                Nemáte HR oddělení? Nevadí. MaxTeam HR je komplexní systém, který se postará o celý proces – od vyhledávání kandidátů přes jejich testování až po hladký nástup do firmy. Vše zvládnete sami za zlomkem času.
+                Nemáte HR oddělení? Nevadí. Octopus HR je komplexní systém, který se postará o celý proces – od vyhledávání kandidátů přes jejich testování až po hladký nástup do firmy. Vše zvládnete sami za zlomkem času.
               </p>
               <div 
                 onClick={() => openModal("Automatizované HR (bez oddělení)")}
@@ -159,7 +159,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
             <div className="max-w-2xl">
-              <h2 className="text-octopus-gold font-bold text-xs uppercase tracking-[0.5em] mb-8">Funkce MaxTeam HR</h2>
+              <h2 className="text-octopus-gold font-bold text-xs uppercase tracking-[0.5em] mb-8">Funkce Octopus HR</h2>
               <h3 className="text-6xl sm:text-7xl font-bold tracking-tighter text-octopus-navy leading-[0.9]">Těžiště vašeho <br/>úspěchu.</h3>
             </div>
             <p className="text-octopus-navy/40 font-medium max-w-xs text-lg leading-relaxed">Špičková AI technologie pro každou fázi zaměstnaneckého cyklu.</p>
@@ -167,9 +167,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-16">
             {[
-              { title: 'Inteligentní Nábor', icon: Target, color: 'bg-octopus-blue', desc: 'MaxTeam HR identifikuje talenty, kteří u vás ještě nepracují, ale měli by. Přitahuje ty pravé lidi silou dat a přesným cílením.' },
+              { title: 'Inteligentní Nábor', icon: Target, color: 'bg-octopus-blue', desc: 'Octopus HR identifikuje talenty, kteří u vás ještě nepracují, ale měli by. Přitahuje ty pravé lidi silou dat a přesným cílením.' },
               { title: 'Neomylný Výběr', icon: Zap, color: 'bg-octopus-gold', desc: 'S naším algoritmem se nespletete. Identifikujeme kandidáty s nejvyšší shodou na pozici i firemní kulturu dříve, než se s nimi setkáte.' },
-              { title: 'Plynulý Onboarding', icon: UserPlus, color: 'bg-octopus-green', desc: 'Aby nový kolega začal hned vítězit. MaxTeam HR zjednodušuje první dny ve firmě díky automatizovaným balíčkům a digitální podpoře.' }
+              { title: 'Plynulý Onboarding', icon: UserPlus, color: 'bg-octopus-green', desc: 'Aby nový kolega začal hned vítězit. Octopus HR zjednodušuje první dny ve firmě díky automatizovaným balíčkům a digitální podpoře.' }
             ].map((phase, i) => (
               <motion.div 
                 key={i} 
@@ -235,13 +235,13 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-32 items-center">
             <div>
               <h2 className="text-octopus-gold font-bold text-xs uppercase tracking-[0.5em] mb-10">Maximální návratnost</h2>
-              <h3 className="text-6xl sm:text-7xl font-bold tracking-tighter mb-20 leading-[0.85]">MaxTeam HR <br/>šetří, co je nejdražší.</h3>
+              <h3 className="text-6xl sm:text-7xl font-bold tracking-tighter mb-20 leading-[0.85]">Octopus HR <br/>šetří, co je nejdražší.</h3>
               
               <div className="space-y-16">
                 {[
-                  { icon: Clock, title: '70% úspora času', desc: 'Zbavte své manažery i personalisty administrativní zátěže. MaxTeam HR postoupí jen ty, kteří za to stojí.' },
+                  { icon: Clock, title: '70% úspora času', desc: 'Zbavte své manažery i personalisty administrativní zátěže. Octopus HR postoupí jen ty, kteří za to stojí.' },
                   { icon: DollarSign, title: 'Snížení nákladů', desc: 'Rychleji obsazená pozice znamená méně ušlých příležitostí a nižší náklady na inzerci i externí agentury.' },
-                  { icon: TrendingUp, title: 'Identifikace talentů', desc: 'Najdeme potenciál i tam, kde ho ostatní nevidí. S MaxTeam HR získáte lidi, kteří u vás chtějí skutečně vítězit.' }
+                  { icon: TrendingUp, title: 'Identifikace talentů', desc: 'Najdeme potenciál i tam, kde ho ostatní nevidí. S Octopus HR získáte lidi, kteří u vás chtějí skutečně vítězit.' }
                 ].map((benefit, i) => (
                   <div key={i} className="flex gap-10 group">
                     <div className="w-16 h-16 rounded-3xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-octopus-gold group-hover:border-octopus-gold transition-all duration-500">

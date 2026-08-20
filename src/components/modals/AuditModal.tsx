@@ -132,7 +132,7 @@ export default function AuditModal({ isOpen, onClose }: AuditModalProps) {
                   className="w-24 h-24 rounded-full border-4 border-octopus-gold/20 border-t-octopus-gold mb-10"
                 />
                 <h2 className="text-4xl font-bold text-octopus-navy mb-4 tracking-tight">Vyhodnocujeme váš audit...</h2>
-                <p className="text-octopus-navy/50 font-medium">Algoritmus MaxTeam HR analyzuje vaše odpovědi.</p>
+                <p className="text-octopus-navy/50 font-medium">Algoritmus Octopus HR analyzuje vaše odpovědi.</p>
               </div>
             ) : (
               <div className="flex-1 flex flex-col justify-center max-w-2xl mx-auto w-full">
@@ -249,7 +249,7 @@ export default function AuditModal({ isOpen, onClose }: AuditModalProps) {
                 </div>
                 <div>
                    <h2 className="font-bold text-octopus-navy leading-none mb-1">Výsledek HR Auditu</h2>
-                   <p className="text-[10px] font-bold uppercase tracking-widest text-octopus-navy/30">MaxTeam HR AI Diagnostics</p>
+                   <p className="text-[10px] font-bold uppercase tracking-widest text-octopus-navy/30">Octopus HR AI Diagnostics</p>
                 </div>
               </div>
               <div className="flex gap-2">

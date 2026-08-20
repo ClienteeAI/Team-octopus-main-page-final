@@ -17,7 +17,7 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-10 group cursor-pointer">
               <Logo className="w-24 h-24 group-hover:scale-110 transition-transform duration-700" />
               <div className="flex flex-col -translate-x-3">
-                <span className="text-xs font-bold tracking-[0.4em] text-octopus-gold uppercase mt-1">MaxTeam HR AI Hub</span>
+                <span className="text-xs font-bold tracking-[0.4em] text-octopus-gold uppercase mt-1">Octopus HR AI Hub</span>
               </div>
             </div>
             <p className="text-octopus-navy/50 font-medium leading-relaxed text-lg italic font-serif">

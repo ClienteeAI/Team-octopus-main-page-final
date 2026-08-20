@@ -29,7 +29,7 @@ export default function Navbar({ onAuditClick }: { onAuditClick?: () => void }) 
         <Link to="/" className="flex items-center gap-1 group">
           <Logo className="w-20 h-20 group-hover:scale-110 transition-transform duration-700 ease-out translate-y-1" />
           <div className="flex flex-col -translate-x-2">
-            <span className="text-[10px] font-bold tracking-[0.4em] text-octopus-gold uppercase mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-700">MaxTeam HR AI Hub</span>
+            <span className="text-[10px] font-bold tracking-[0.4em] text-octopus-gold uppercase mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-700">Octopus HR AI Hub</span>
           </div>
         </Link>
         
